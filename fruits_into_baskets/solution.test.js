@@ -1,5 +1,4 @@
-const { test, expect } = require('@jest/globals')
-const fruits_into_baskets = require('./solution')
+const fruits_into_baskets = require('./solution_refactored')
 
 test('test #1', () => {
     const arr = ['A', 'B', 'C', 'A', 'C']
