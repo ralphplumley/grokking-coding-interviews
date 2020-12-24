@@ -18,4 +18,3 @@ const max_sub_array_of_size_k = function (k, arr) {
 
 const result1 = max_sub_array_of_size_k(3, [2, 1, 5, 1, 3, 2])
 const result2 = max_sub_array_of_size_k(2, [2, 3, 4, 1, 5])
-console.log(`max subarrays of size K: ${result2}`)

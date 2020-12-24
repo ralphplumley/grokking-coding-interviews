@@ -19,8 +19,6 @@ const make_squares = function (arr) {
         highestSquareIndex--
     }
 
-
-    console.log(squares)
     return squares
 }
 
