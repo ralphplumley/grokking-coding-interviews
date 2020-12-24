@@ -40,7 +40,10 @@ const remove_duplicates = function (arr) {
     return ptr_next
 }
 
-
+/*
+Time: O(n)
+Space: in place so O(n)
+*/
 
 
 module.exports = remove_duplicates
