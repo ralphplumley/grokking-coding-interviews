@@ -18,7 +18,13 @@ test('', () => {
     expect(search_triplets(arr)).toEqual(solution)
 })
 
-
+test('', () => {
+    let arr = [-1, -1, 0, 1, 1]
+    let solution = [
+        [ -1, 0, 1],
+        [ -1, 0, 1]]
+    expect(search_triplets(arr)).toEqual(solution)
+})
 
 
 

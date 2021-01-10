@@ -3,7 +3,7 @@ const search_triplets = function(arr) {
     arr.sort((a,b) => a-b)
 
     let triplets = [];
-    for (let x = 0; x < arr.length; x++) {
+    for (let x = 0; x < arr.length - 2; x++) {
         let y = x + 1, z = arr.length - 1
         while (y < z) {
             let target_sum = 0 - arr[x]
