@@ -20,4 +20,6 @@ const getNew = function(num) {
 
 
 // console.log(`${find_happy_number(23)}`)
-console.log(`${find_happy_number(12)}`)
+// console.log(`${find_happy_number(12)}`)
+console.log(`${find_happy_number(19)}`)
+console.log(`${find_happy_number(2)}`)
