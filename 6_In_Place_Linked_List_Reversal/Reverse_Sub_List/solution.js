@@ -43,7 +43,7 @@ const reverse_sub_list = function(head, p, q) {
     if (last_node_of_first_part !== null) {
         last_node_of_first_part.next = previous
     } else {
-        head = first
+        head = previous
     }
 
     last_node_of_sub_list.next = current
