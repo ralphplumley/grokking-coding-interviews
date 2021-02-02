@@ -28,9 +28,9 @@ function rotate(head, rotations) {
     }
     last_node.next = head; // connect the last node with the head to make it a circular list
     rotations %= list_length; // no need to do rotations more than the length of the list
-    skip_length = list_length - rotations;
-    last_node_of_rotated_list = head;
-    for (i = 0; i < skip_length - 1; i++) {
+    let skip_length = list_length - rotations;
+    let last_node_of_rotated_list = head;
+    for (let i = 0; i < skip_length - 1; i++) {
         last_node_of_rotated_list = last_node_of_rotated_list.next;
     }
 
