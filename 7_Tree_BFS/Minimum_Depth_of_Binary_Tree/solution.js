@@ -9,8 +9,7 @@ class TreeNode {
 
 
 const find_minimum_depth = function(root) {
-    let result = []
-    if (!root) return result
+    if (!root) return 0
 
     let queue = [root]
     let min_depth = 1
@@ -31,12 +30,9 @@ const find_minimum_depth = function(root) {
 
 
 
-var root = new TreeNode(12)
-root.left = new TreeNode(7)
-root.right = new TreeNode(1)
-root.right.left = new TreeNode(10)
-root.right.right = new TreeNode(5)
-console.log(`Tree Minimum Depth: ${find_minimum_depth(root)}`)
-root.left.left = new TreeNode(9)
-root.right.left.left = new TreeNode(11)
+let root = new TreeNode(3)
+root.left = new TreeNode(9)
+root.right = new TreeNode(20)
+root.right.left = new TreeNode(15)
+root.right.right = new TreeNode(7)
 console.log(`Tree Minimum Depth: ${find_minimum_depth(root)}`)
