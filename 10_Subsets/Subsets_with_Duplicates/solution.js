@@ -1,29 +1,53 @@
 const find_subsets = function(nums) {
+    // sort to handle duplicates
     nums.sort()
 
-    const subsets = [];
+    let subsets = [];
     subsets.push([])
 
-    let startIndex = 0,
-        endIndex = 0
-
     for (let i = 0; i < nums.length; i++) {
-        startIndex = 0
-        // if current and previous elements are the same, create new subsets only from the subsets added in the previous step
-        if (i > 0 && nums[i] === nums[i - 1]) startIndex = endIndex + 1
-        endIndex = subsets.length - 1
+        let startIndex = 0
+        let endIndex = subsets.length
 
-        for (j = startIndex; j < endIndex + 1; j++) {
-            const set1 = subsets[j].slice(0)
-            set1.push(nums[i])
-            subsets.push(set1)
+        if (i > 0 && nums[i] === nums[i-1]) {
+            startIndex = i
+            endIndex = subsets.length
+        }
+
+        for(let j = startIndex; j < endIndex; j++) {
+            let current_set = subsets[j].slice(0)
+            current_set.push(nums[i])
+            subsets.push(current_set)
         }
     }
+
     return subsets;
-};
+}
+
+// console.log('Here is the list of subsets: ');
+// let result = find_subsets([1, 3, 3]);
+// result.forEach((subset) => {
+//     console.log(subset);
+// });
 
 console.log('Here is the list of subsets: ');
-let result = find_subsets([1, 3, 3]);
+result = find_subsets([1, 5, 3, 3]);
 result.forEach((subset) => {
     console.log(subset);
-})
+});
+
+
+/*
+[]
+[ 1 ]
+[ 3 ]
+[ 1, 3 ]
+[ 3, 3 ]
+[ 1, 3, 3 ]
+[ 5 ]
+[ 1, 5 ]
+[ 3, 5 ]
+[ 1, 3, 5 ]
+[ 3, 3, 5 ]
+[ 1, 3, 3, 5 ]
+ */
