@@ -17,6 +17,6 @@ const search_next_letter = function(letters, key) {
 };
 
 
-console.log(search_next_letter(['a', 'c', 'f', 'h'], 'f'))
+// console.log(search_next_letter(['a', 'c', 'f', 'h'], 'f'))
 console.log(search_next_letter(['a', 'c', 'f', 'h'], 'b'))
-console.log(search_next_letter(['a', 'c', 'f', 'h'], 'm'))
+// console.log(search_next_letter(['a', 'c', 'f', 'h'], 'm'))

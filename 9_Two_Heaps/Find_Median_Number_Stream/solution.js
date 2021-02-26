@@ -33,7 +33,7 @@ BinaryHeap.prototype = {
             let end = this.content.pop()
             // if the element we popped was the one we needed to remove, we're done
             if (i === length - 1) break
-            // otherwise, we replace the rmeoved element with the popped one, and allow it to float up or sink down as appropriate
+            // otherwise, we replace the removed element with the popped one, and allow it to float up or sink down as appropriate
             this.content[i] = end
             this.bubbleUp(i)
             this.sinkDown(i)
@@ -100,8 +100,6 @@ BinaryHeap.prototype = {
     }
 }
 
-
-
 class MedianOfAStream {
 
     constructor() {
@@ -128,7 +126,7 @@ class MedianOfAStream {
 
 
 
-var medianOfAStream = new MedianOfAStream()
+let medianOfAStream = new MedianOfAStream()
 medianOfAStream.insert_num(3)
 medianOfAStream.insert_num(1)
 console.log(`The median is: ${medianOfAStream.find_median()}`)
