@@ -105,6 +105,7 @@ class MedianOfAStream {
     constructor() {
        this.numbers = []
     }
+
     insert_num(num) {
         this.numbers.push(num)
     }
