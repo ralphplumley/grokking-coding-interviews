@@ -1,83 +1,3 @@
-class MinHeap {
-    constructor() {
-        this.items = []
-    }
-
-    getItems() {
-        return this.items
-    }
-
-    add(tuple) {
-        this.items.push(tuple)
-        this.bubbleUp(this.items.length - 1)
-    }
-
-    remove() {
-        this.swap(0, this.items.length - 1)
-        const min = this.items.pop()
-        this.trickleDown(0)
-        return min
-    }
-
-    bubbleUp(index) {
-        const parent = Math.floor((index - 1) / 2)
-        let max = index
-
-        if (parent >= 0 && this.items[parent][0] > this.items[max][0]) max = parent
-
-        if (max !== index) {
-            this.swap(max, index)
-            this.bubbleUp(max)
-        }
-    }
-
-    trickleDown(index) {
-        const leftChild = 2 * index + 1
-        const rightChild = 2 * index + 2
-        let min = index
-
-        if(leftChild < this.items.length && this.items[leftChild][0] < this.items[min][0]) min = leftChild;
-        if(rightChild < this.items.length && this.items[rightChild][0] < this.items[min][0]) min = rightChild;
-
-        if(min !== index) {
-            this.swap(min, index);
-            this.trickleDown(min);
-        }
-    }
-
-    swap(i, j) {
-        [this.items[i], this.items[j]] = [this.items[j], this.items[i]]
-    }
-
-    peek() {
-        return this.items[0]
-    }
-}
-
-const find_closest_elements = function(arr, k, x) {
-    const index = binary_search(arr, x)
-    let low = index - k,
-        high = index + k
-
-    low = Math.max(low, 0) // low shouldn't be below 0
-    high = Math.min(high, arr.length - 1) // high shouldn't be greater than the size of the array
-
-    const minHeap = new MinHeap()
-    for (let i = low; i < high + 1; i++) {
-        let num = arr[i]
-        minHeap.add([Math.abs(x - num), num])
-    }
-
-    // we need the top 'K' elements having smallest difference from 'X
-    result = [];
-    for (let i = 0; i < k; i++) {
-        result.push(minHeap.remove()[1])
-    }
-
-    result.sort((a,b) => a-b)
-    return result;
-};
-
 function binary_search(arr, target) {
     let low = 0,
         high = arr.length - 1;
@@ -99,9 +19,42 @@ function binary_search(arr, target) {
 }
 
 
-console.log(`'K' closest numbers to 'X' are: ${find_closest_elements([5, 6, 7, 8, 9], 3, 7)}`)
-console.log(`'K' closest numbers to 'X' are: ${find_closest_elements([2, 4, 5, 6, 9], 3, 6)}`)
-console.log(`'K' closest numbers to 'X' are: ${find_closest_elements([2, 4, 5, 6, 9], 3, 10)}`)
+function find_closest_elements(arr, K, X) {
+    const result = []
+    const index = binary_search(arr, X);
+    let leftPointer = index,
+        rightPointer = index + 1;
+    const n = arr.length;
+    for (let i = 0; i < K; i++) {
+        if (leftPointer >= 0 && rightPointer < n) {
+            const diff1 = Math.abs(X - arr[leftPointer]);
+            const diff2 = Math.abs(X - arr[rightPointer]);
+            if (diff1 <= diff2) {
+                result.unshift(arr[leftPointer]);
+                leftPointer -= 1;
+            } else {
+                result.push(arr[rightPointer]);
+                rightPointer += 1;
+            }
+        } else if (leftPointer >= 0) {
+            result.unshift(arr[leftPointer]);
+            leftPointer -= 1;
+        } else if (rightPointer < n) {
+            result.push(arr[rightPointer]);
+            rightPointer += 1;
+        }
+    }
+
+    return result
+
+}
+
+
+
+// console.log(`'K' closest numbers to 'X' are: ${find_closest_elements([5, 6, 7, 8, 9], 3, 7)}`)
+// console.log(`'K' closest numbers to 'X' are: ${find_closest_elements([2, 4, 5, 6, 9], 3, 6)}`)
+// console.log(`'K' closest numbers to 'X' are: ${find_closest_elements([2, 4, 5, 6, 9], 3, 10)}`)
+console.log(`'K' closest numbers to 'X' are: ${find_closest_elements([0,0,1,2,3,3,4,7,7,8], 3, 5)}`) // => [3,3,4]
 
 
 
