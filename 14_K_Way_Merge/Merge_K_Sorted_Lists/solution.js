@@ -64,56 +64,50 @@ class ListNode {
 }
 
 const merge_lists = function(lists) {
-    /*
-        add first element of each array into heap
-        create answer linkedlist
-
-        while the minheap isn't empty
-            take the min element, and make it answerLL.next
-            if there's a next element from the same array and push that into mineap
-
-        return answer linkedlist
-
-     */
     let minHeap = new MinHeap()
-
+    // put the root of each list in the min heap
     lists.forEach((a) => {
-        minHeap.add(a)
-    })
+        if (a !== null) {
+            minHeap.add(a);
+        }
+    });
 
-    let resultHead = new ListNode()
-    let head = resultHead
+    // take the smallest(top) element form the min-heap and add it to the result
+    // if the top element has a next element add it to the heap
+    let resultHead = null,
+        resultTail = null;
 
     while (minHeap.items.length > 0) {
-        let minElement = minHeap.remove()
-        resultHead.next = minElement
-        resultHead = resultHead.next
-        if (minElement.next !== null) {
-            minHeap.add(minElement.next)
+        const node = minHeap.remove();
+        if (resultHead === null) {
+            resultHead = resultTail = node;
+        } else {
+            resultTail.next = node;
+            resultTail = resultTail.next;
+        }
+        if (node.next !== null) {
+            minHeap.add(node.next);
         }
     }
 
-    return head.next
+    return resultHead
 };
 
+const l1 = new ListNode(2);
+l1.next = new ListNode(6);
+l1.next.next = new ListNode(8);
 
+const l2 = new ListNode(3);
+l2.next = new ListNode(6);
+l2.next.next = new ListNode(7);
 
-l1 = new ListNode(2)
-l1.next = new ListNode(6)
-l1.next.next = new ListNode(8)
+const l3 = new ListNode(1);
+l3.next = new ListNode(3);
+l3.next.next = new ListNode(4);
 
-l2 = new ListNode(3)
-l2.next = new ListNode(6)
-l2.next.next = new ListNode(7)
-
-l3 = new ListNode(1)
-l3.next = new ListNode(3)
-l3.next.next = new ListNode(4)
-
-result = merge_lists([l1, l2, l3])
-output = "Here are the elements form the merged list: ";
-while (result != null) {
-    output += result.value + " ";
+let result = merge_lists([l1, l2, l3]);
+process.stdout.write('Here are the elements form the merged list: ');
+while (result !== null) {
+    process.stdout.write(`${result.value} `);
     result = result.next;
 }
-console.log(output)
