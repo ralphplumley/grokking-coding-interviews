@@ -9,9 +9,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^26.6.3",
     "ws": ">=7.4.6",
     "lodash": ">=4.17.21",
-    "hosted-git-info": ">=2.8.9"
+    "hosted-git-info": ">=2.8.9",
+    "jest": "^26.6.3"
+  },
+  "dependencies": {
+    "collections": "^5.1.12"
   }
 }

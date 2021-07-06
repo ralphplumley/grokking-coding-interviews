@@ -8,7 +8,6 @@ function search_triplets(arr) {
         search_pair(arr, -arr[i], i + 1, triplets);
     }
 
-    console.log(triplets)
     return triplets;
 }
 
